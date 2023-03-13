@@ -237,6 +237,44 @@ U - Reset encoder</Description>
         </Workflow>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
+        <Name>AnalogInput-HallSensor(V)</Name>
+        <Description>REF = 3.3 V / 1.6
+R_DIV = 15 / (15 + 24)
+N_BITS = 12
+
+[V] = (REF / 2 ^ N_BITS) / R_DIV * RegisterValue</Description>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="PropertyMapping">
+              <PropertyMappings>
+                <Property Name="Value" />
+              </PropertyMappings>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>30</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Multiply">
+              <Operand xsi:type="FloatProperty">
+                <Value>0.001309204</Value>
+              </Operand>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="2" Label="Source1" />
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source2" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
         <Name>Encoder</Name>
         <Workflow>
           <Nodes>
@@ -268,7 +306,8 @@ U - Reset encoder</Description>
       <Edge From="1" To="2" Label="Source2" />
       <Edge From="2" To="3" Label="Source1" />
       <Edge From="3" To="4" Label="Source1" />
-      <Edge From="3" To="5" Label="Source1" />
+      <Edge From="3" To="6" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
