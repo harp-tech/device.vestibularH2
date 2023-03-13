@@ -84,17 +84,6 @@ void start_rotation (int32_t requested_steps)
 	
 	/* Start the generation of pulses */
 	timer_type0_pwm(&TCC0, TIMER_PRESCALER_DIV64, m_max_pulse_interval_us, m_pulse_period_us, INT_LEVEL_MED, INT_LEVEL_MED);
-	/*
-	TCC0.CTRLA = TC_CLKSEL_OFF_gc;		// Make sure timer is stopped to make reset
-	TCC0.CTRLFSET = TC_CMD_RESET_gc;		// Timer reset (registers to initial value)
-	TCC0.PER = m_max_pulse_interval_us-1;			// Set up target
-	TCC0.CCA = m_pulse_period_us;		    // Set duty cycle
-	TCC0.INTCTRLA = INT_LEVEL_MED;			// Enable overflow interrupt
-	TCC0.INTCTRLB = INT_LEVEL_MED;			// Enable compare interrupt on channel A
-	TCC0.CTRLB = TC0_CCAEN_bm;// | TC_WGMODE_SINGLESLOPE_gc;
-											// Enable channel A and single slope mode
-	TCC0.CTRLA = TIMER_PRESCALER_DIV64;
-	*/
 }
 
 int32_t user_sent_request (int32_t requested_steps)
