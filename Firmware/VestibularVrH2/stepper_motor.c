@@ -86,6 +86,12 @@ void start_rotation (int32_t requested_steps)
 	timer_type0_pwm(&TCC0, TIMER_PRESCALER_DIV64, m_max_pulse_interval_us, m_pulse_period_us, INT_LEVEL_MED, INT_LEVEL_MED);
 }
 
+void stop_rotation (void)
+{
+	timer_type0_stop(&TCC0);
+	motor_is_running = false;
+}
+
 int32_t user_sent_request (int32_t requested_steps)
 {	
 	// DISABLE MID INTERRUPTS -----------------------------------------------------------------------------
@@ -200,7 +206,7 @@ ISR(TCC0_CCA_vect/*, ISR_NAKED*/)
 	if (steps_count == steps_target)
 	{
 		/* Stop motor */
-		timer_type0_stop(&TCC0);
-		motor_is_running = false;
+		stop_rotation();
 	}
 }
+

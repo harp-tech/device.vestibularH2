@@ -187,6 +187,9 @@ int32_t user_requested_steps = 0;
 
 void core_callback_t_1ms(void)
 {
+	if ((app_regs.REG_CONTROL & B_ENABLE_MOTOR) == false)
+		/* Stop motor */
+		stop_rotation();
 	if (user_requested_steps != 0)
 		user_requested_steps = user_sent_request(user_requested_steps);
 }

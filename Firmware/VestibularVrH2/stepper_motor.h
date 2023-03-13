@@ -17,6 +17,8 @@ void update_pulse_step_interval (uint16_t time_us);
 void update_pulse_period (uint16_t time_us);
 
 void start_rotation (int32_t requested_steps);
+void stop_rotation (void);
+
 int32_t user_sent_request (int32_t requested_steps);
 
 #endif /* _STEPPER_MOTOR_H_ */
