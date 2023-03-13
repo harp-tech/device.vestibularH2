@@ -188,10 +188,30 @@ int32_t user_requested_steps = 0;
 void core_callback_t_1ms(void)
 {
 	if ((app_regs.REG_CONTROL & B_ENABLE_MOTOR) == false)
+	{
+		/* Disable medium and high level interrupts */
+		/* Medium are enough but we can win some precious cpu time here */
+		PMIC_CTRL = PMIC_RREN_bm | PMIC_LOLVLEN_bm;
+		
 		/* Stop motor */
 		stop_rotation();
+		
+		/* Re-enable all interrupt levels */
+		PMIC_CTRL = PMIC_RREN_bm | PMIC_LOLVLEN_bm | PMIC_MEDLVLEN_bm | PMIC_HILVLEN_bm;
+	}
+	
 	if (user_requested_steps != 0)
+	{	
+		/* Disable medium and high level interrupts */
+		/* Medium are enough but we can win some precious cpu time here */
+		PMIC_CTRL = PMIC_RREN_bm | PMIC_LOLVLEN_bm;
+		
+		/* Update steps with the user request */
 		user_requested_steps = user_sent_request(user_requested_steps);
+		
+		/* Re-enable all interrupt levels */
+		PMIC_CTRL = PMIC_RREN_bm | PMIC_LOLVLEN_bm | PMIC_MEDLVLEN_bm | PMIC_HILVLEN_bm;
+	}
 }
 
 /************************************************************************/

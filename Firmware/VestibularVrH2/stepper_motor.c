@@ -93,8 +93,7 @@ void stop_rotation (void)
 }
 
 int32_t user_sent_request (int32_t requested_steps)
-{	
-	// DISABLE MID INTERRUPTS -----------------------------------------------------------------------------
+{
 	if (!motor_is_running)
 	{
 		start_rotation(requested_steps);
