@@ -106,6 +106,7 @@ void core_callback_reset_registers(void)
 void core_callback_registers_were_reinitialized(void)
 {
 	/* Write register that have effect on other zones of the code */
+	app_write_REG_CONTROL(&app_regs.REG_CONTROL);
 	app_write_REG_NOMINAL_PULSE_INTERVAL(&app_regs.REG_NOMINAL_PULSE_INTERVAL);
 	app_write_REG_INITIAL_PULSE_INTERVAL(&app_regs.REG_INITIAL_PULSE_INTERVAL);
 	app_write_REG_PULSE_STEP_INTERVAL(&app_regs.REG_PULSE_STEP_INTERVAL);
