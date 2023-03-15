@@ -18,8 +18,9 @@ void (*app_func_rd_pointer[])(void) = {
 	&app_read_REG_PULSE_STEP_INTERVAL,
 	&app_read_REG_PULSE_PERIOD,
 	&app_read_REG_ENCODER,
-	&app_read_REG_ANALLOG_INPUT,
-	&app_read_REG_STOP_SWITCH
+	&app_read_REG_ANALOG_INPUT,
+	&app_read_REG_STOP_SWITCH,
+	&app_read_REG_MOVING
 };
 
 bool (*app_func_wr_pointer[])(void*) = {
@@ -30,8 +31,9 @@ bool (*app_func_wr_pointer[])(void*) = {
 	&app_write_REG_PULSE_STEP_INTERVAL,
 	&app_write_REG_PULSE_PERIOD,
 	&app_write_REG_ENCODER,
-	&app_write_REG_ANALLOG_INPUT,
-	&app_write_REG_STOP_SWITCH
+	&app_write_REG_ANALOG_INPUT,
+	&app_write_REG_STOP_SWITCH,
+	&app_write_REG_MOVING
 };
 
 
@@ -110,7 +112,7 @@ bool app_write_REG_CONTROL(void *a)
 
 
 /************************************************************************/
-/* REG_PULSES                                                            */
+/* REG_PULSES                                                           */
 /************************************************************************/
 extern int32_t user_requested_steps;
 
@@ -255,15 +257,15 @@ bool app_write_REG_ENCODER(void *a)
 
 
 /************************************************************************/
-/* REG_ANALLOG_INPUT                                                    */
+/* REG_ANALOG_INPUT                                                     */
 /************************************************************************/
-void app_read_REG_ANALLOG_INPUT(void)
+void app_read_REG_ANALOG_INPUT(void)
 {
 	//app_regs.REG_ANALLOG_INPUT = 0;
 
 }
 
-bool app_write_REG_ANALLOG_INPUT(void *a)
+bool app_write_REG_ANALOG_INPUT(void *a)
 {
 	return false;
 }
@@ -278,6 +280,21 @@ void app_read_REG_STOP_SWITCH(void)
 }
 
 bool app_write_REG_STOP_SWITCH(void *a)
+{
+	return false;
+}
+
+
+/************************************************************************/
+/* REG_MOVING                                                           */
+/************************************************************************/
+void app_read_REG_MOVING(void)
+{
+	//app_regs.REG_MOVING = 0;
+
+}
+
+bool app_write_REG_MOVING(void *a)
 {
 	return false;
 }

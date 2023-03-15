@@ -27,8 +27,9 @@ void app_read_REG_INITIAL_PULSE_INTERVAL(void);
 void app_read_REG_PULSE_STEP_INTERVAL(void);
 void app_read_REG_PULSE_PERIOD(void);
 void app_read_REG_ENCODER(void);
-void app_read_REG_ANALLOG_INPUT(void);
+void app_read_REG_ANALOG_INPUT(void);
 void app_read_REG_STOP_SWITCH(void);
+void app_read_REG_MOVING(void);
 
 bool app_write_REG_CONTROL(void *a);
 bool app_write_REG_PULSES(void *a);
@@ -37,8 +38,9 @@ bool app_write_REG_INITIAL_PULSE_INTERVAL(void *a);
 bool app_write_REG_PULSE_STEP_INTERVAL(void *a);
 bool app_write_REG_PULSE_PERIOD(void *a);
 bool app_write_REG_ENCODER(void *a);
-bool app_write_REG_ANALLOG_INPUT(void *a);
+bool app_write_REG_ANALOG_INPUT(void *a);
 bool app_write_REG_STOP_SWITCH(void *a);
+bool app_write_REG_MOVING(void *a);
 
 
 #endif /* _APP_FUNCTIONS_H_ */

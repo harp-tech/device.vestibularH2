@@ -63,8 +63,8 @@ ISR(PORTB_INT0_vect, ISR_NAKED)
 /************************************************************************/
 ISR(ADCA_CH0_vect, ISR_NAKED)
 {
-	app_regs.REG_ANALLOG_INPUT = get_analog_input();
-	core_func_send_event(ADD_REG_ANALLOG_INPUT, false);
+	app_regs.REG_ANALOG_INPUT = get_analog_input();
+	core_func_send_event(ADD_REG_ANALOG_INPUT, false);
 	
 	reti();
 }

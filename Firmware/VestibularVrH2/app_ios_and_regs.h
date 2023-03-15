@@ -48,8 +48,9 @@ typedef struct
 	uint16_t REG_PULSE_STEP_INTERVAL;
 	uint16_t REG_PULSE_PERIOD;
 	int16_t REG_ENCODER;
-	int16_t REG_ANALLOG_INPUT;
+	int16_t REG_ANALOG_INPUT;
 	uint8_t REG_STOP_SWITCH;
+	uint8_t REG_MOVING;
 } AppRegs;
 
 /************************************************************************/
@@ -63,8 +64,9 @@ typedef struct
 #define ADD_REG_PULSE_STEP_INTERVAL         36 // U16    Sets the acceleration. The pulse's interval is decreased by this value when accelerating and increased when de-accelerating.
 #define ADD_REG_PULSE_PERIOD                37 // U16    Sets the period of the pulse.
 #define ADD_REG_ENCODER                     38 // I16    Contains the reading of the quadrature encoder.
-#define ADD_REG_ANALLOG_INPUT               39 // I16    Contains the reading of the analog input.
+#define ADD_REG_ANALOG_INPUT                39 // I16    Contains the reading of the analog input.
 #define ADD_REG_STOP_SWITCH                 40 // U8     Contains the state of the stop switch.
+#define ADD_REG_MOVING                      41 // U8     Contains the state of the motor.
 
 /************************************************************************/
 /* PWM Generator registers' memory limits                               */
@@ -74,8 +76,8 @@ typedef struct
 /************************************************************************/
 /* Memory limits */
 #define APP_REGS_ADD_MIN                    0x20
-#define APP_REGS_ADD_MAX                    0x28
-#define APP_NBYTES_OF_REG_BANK              18
+#define APP_REGS_ADD_MAX                    0x29
+#define APP_NBYTES_OF_REG_BANK              19
 
 /************************************************************************/
 /* Registers' bits                                                      */
@@ -88,5 +90,6 @@ typedef struct
 #define B_DISABLE_QUAD_ENCODER             (1<<5)       // 
 #define B_RESET_QUAD_ENCODER               (1<<6)       // 
 #define B_STOP_SWITCH                      (1<<0)       // 
+#define B_IS_MOVING                        (1<<0)       // 
 
 #endif /* _APP_REGS_H_ */
