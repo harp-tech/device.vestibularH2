@@ -290,8 +290,7 @@ bool app_write_REG_STOP_SWITCH(void *a)
 /************************************************************************/
 void app_read_REG_MOVING(void)
 {
-	//app_regs.REG_MOVING = 0;
-
+	app_regs.REG_MOVING = (TCC0_CTRLA) ? B_IS_MOVING : 0;
 }
 
 bool app_write_REG_MOVING(void *a)
