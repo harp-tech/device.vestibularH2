@@ -144,6 +144,8 @@ void core_callback_device_to_speed(void) {}
 /************************************************************************/
 int16_t quadrature_previous_value = 0;
 
+extern bool send_motor_stopped_notification;
+
 void core_callback_t_before_exec(void)
 {
 	/* Read ADC */
@@ -165,6 +167,15 @@ void core_callback_t_before_exec(void)
 	}
 		
 	quadrature_previous_value = app_regs.REG_ENCODER;
+	
+	/* Notify that motor is stopped */
+	if (send_motor_stopped_notification)
+	{		
+		send_motor_stopped_notification = false;
+		
+		app_regs.REG_MOVING = 0;
+		core_func_send_event(ADD_REG_MOVING, true);
+	}
 }
 void core_callback_t_after_exec(void) {}
 void core_callback_t_new_second(void) {}
