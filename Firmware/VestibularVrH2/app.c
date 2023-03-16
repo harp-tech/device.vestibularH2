@@ -134,7 +134,12 @@ void core_callback_visualen_to_off(void)
 /************************************************************************/
 /* Callbacks: Change on the operation mode                              */
 /************************************************************************/
-void core_callback_device_to_standby(void) {}
+void core_callback_device_to_standby(void)
+{
+	/* Disables motor when goes to Standby Mode */
+	uint8_t reg = B_DISABLE_MOTOR;
+	app_write_REG_CONTROL(&reg);
+}
 void core_callback_device_to_active(void) {}
 void core_callback_device_to_enchanced_active(void) {}
 void core_callback_device_to_speed(void) {}
