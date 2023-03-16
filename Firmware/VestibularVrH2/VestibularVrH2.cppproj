@@ -129,10 +129,6 @@
         </avrgcccpp.linker.libraries.Libraries>
         <avrgcccpp.linker.libraries.LibrarySearchPaths>
           <ListValues>
-            <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.CameraController\Firmware\CameraController</Value>
-            <Value>C:\Users\OEPS\Documents\github\harp-tech\harp_RFID_reader\Firmware\RfidReader</Value>
-            <Value>C:\Users\OEPS\Documents\github\harp-tech\harp_camera_controller\Firmware\RfidReader</Value>
-            <Value>C:\Users\OEPS\Documents\github\harp-tech\harp_camera_controller\Firmware\CameraControllerGen2</Value>
           </ListValues>
         </avrgcccpp.linker.libraries.LibrarySearchPaths>
         <avrgcccpp.assembler.general.IncludePaths>

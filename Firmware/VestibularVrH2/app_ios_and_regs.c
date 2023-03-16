@@ -21,8 +21,6 @@ void init_ios(void)
 	clr_MOTOR_ENABLE;
 	clr_MOTOR_PULSE;
 	clr_MOTOR_DIRECTION;
-	
-	set_MOTOR_ENABLE;
 }
 
 /************************************************************************/
@@ -39,10 +37,12 @@ uint8_t app_regs_type[] = {
 	TYPE_U16,
 	TYPE_I16,
 	TYPE_I16,
+	TYPE_U8,
 	TYPE_U8
 };
 
 uint16_t app_regs_n_elements[] = {
+	1,
 	1,
 	1,
 	1,
@@ -62,6 +62,7 @@ uint8_t *app_regs_pointer[] = {
 	(uint8_t*)(&app_regs.REG_PULSE_STEP_INTERVAL),
 	(uint8_t*)(&app_regs.REG_PULSE_PERIOD),
 	(uint8_t*)(&app_regs.REG_ENCODER),
-	(uint8_t*)(&app_regs.REG_ANALLOG_INPUT),
-	(uint8_t*)(&app_regs.REG_STOP_SWITCH)
+	(uint8_t*)(&app_regs.REG_ANALOG_INPUT),
+	(uint8_t*)(&app_regs.REG_STOP_SWITCH),
+	(uint8_t*)(&app_regs.REG_MOVING)
 };

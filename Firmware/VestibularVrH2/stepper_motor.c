@@ -200,12 +200,17 @@ ISR(TCC0_OVF_vect/*, ISR_NAKED*/)
 	}
 }
 
+bool send_motor_stopped_notification = false;
+
 ISR(TCC0_CCA_vect/*, ISR_NAKED*/)
 {		
 	if (steps_count == steps_target)
 	{
 		/* Stop motor */
 		stop_rotation();
+		
+		/* Since this is used at MID level interrupts, send an event from here can happen in the middle of other event */
+		send_motor_stopped_notification = true;
 	}
 }
 
