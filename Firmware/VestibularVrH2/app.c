@@ -39,7 +39,7 @@ void hwbp_app_initialize(void)
     
    	/* Start core */
     core_func_start_core(
-        1224,
+        1225,
         hwH, hwL,
         fwH, fwL,
         ass,
