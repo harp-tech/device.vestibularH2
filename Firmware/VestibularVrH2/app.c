@@ -26,7 +26,7 @@ extern bool (*app_func_wr_pointer[])(void*);
 /************************************************************************/
 /* Initialize app                                                       */
 /************************************************************************/
-static const uint8_t default_device_name[] = "VestibularVrH2";
+static const uint8_t default_device_name[] = "VestibularH2";
 
 void hwbp_app_initialize(void)
 {
@@ -34,12 +34,12 @@ void hwbp_app_initialize(void)
     uint8_t hwH = 1;
     uint8_t hwL = 0;
     uint8_t fwH = 0;
-    uint8_t fwL = 3;
+    uint8_t fwL = 4;
     uint8_t ass = 0;
     
    	/* Start core */
     core_func_start_core(
-        1224,
+        1225,
         hwH, hwL,
         fwH, fwL,
         ass,
