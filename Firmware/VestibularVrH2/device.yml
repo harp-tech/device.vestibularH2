@@ -32,7 +32,7 @@ registers:
     registerType: Command
     visibility: public
     volatile: "no"
-    minValue: 200
+    minValue: 100
     maxValue: 20000
     defaultValue: 250
   InitialPulseInterval:
@@ -44,7 +44,7 @@ registers:
     registerType: Command
     visibility: public
     volatile: "no"
-    minValue: 200
+    minValue: 100
     maxValue: 20000
     defaultValue: 2000
   PulseStepInterval:
