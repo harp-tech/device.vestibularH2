@@ -149,7 +149,7 @@ bool app_write_REG_NOMINAL_PULSE_INTERVAL(void *a)
 {
 	uint16_t reg = *((uint16_t*)a);
 	
-	if (reg < 200) return false;
+	if (reg < 100) return false;
 	if (reg > 20000) return false;
 	
 	if (TCC0.CTRLA) return false;	
@@ -174,7 +174,7 @@ bool app_write_REG_INITIAL_PULSE_INTERVAL(void *a)
 {
 	uint16_t reg = *((uint16_t*)a);
 	
-	if (reg < 200) return false;
+	if (reg < 100) return false;
 	if (reg > 20000) return false;
 	
 	if (TCC0.CTRLA) return false;
