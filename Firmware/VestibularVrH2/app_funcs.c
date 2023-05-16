@@ -20,7 +20,8 @@ void (*app_func_rd_pointer[])(void) = {
 	&app_read_REG_ENCODER,
 	&app_read_REG_ANALOG_INPUT,
 	&app_read_REG_STOP_SWITCH,
-	&app_read_REG_MOVING
+	&app_read_REG_MOVING,
+	&app_read_REG_IMMEDIATE_PULSES
 };
 
 bool (*app_func_wr_pointer[])(void*) = {
@@ -33,7 +34,8 @@ bool (*app_func_wr_pointer[])(void*) = {
 	&app_write_REG_ENCODER,
 	&app_write_REG_ANALOG_INPUT,
 	&app_write_REG_STOP_SWITCH,
-	&app_write_REG_MOVING
+	&app_write_REG_MOVING,
+	&app_write_REG_IMMEDIATE_PULSES
 };
 
 
@@ -296,4 +298,23 @@ void app_read_REG_MOVING(void)
 bool app_write_REG_MOVING(void *a)
 {
 	return false;
+}
+
+
+/************************************************************************/
+/* REG_IMMEDIATE_PULSES                                                 */
+/************************************************************************/
+void app_read_REG_IMMEDIATE_PULSES(void)
+{
+	//app_regs.REG_ENCODER = 0;
+
+}
+
+bool app_write_REG_IMMEDIATE_PULSES(void *a)
+{
+	int16_t reg = *((int16_t*)a);
+
+	app_regs.REG_IMMEDIATE_PULSES = reg;
+	
+	return true;
 }

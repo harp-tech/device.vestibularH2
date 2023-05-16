@@ -51,6 +51,7 @@ typedef struct
 	int16_t REG_ANALOG_INPUT;
 	uint8_t REG_STOP_SWITCH;
 	uint8_t REG_MOVING;
+	int16_t REG_IMMEDIATE_PULSES;
 } AppRegs;
 
 /************************************************************************/
@@ -67,6 +68,7 @@ typedef struct
 #define ADD_REG_ANALOG_INPUT                39 // I16    Contains the reading of the analog input.
 #define ADD_REG_STOP_SWITCH                 40 // U8     Contains the state of the stop switch.
 #define ADD_REG_MOVING                      41 // U8     Contains the state of the motor.
+#define ADD_REG_IMMEDIATE_PULSES            42 // I16    Sets immediately the motor's pulse interval. The value's signal defines the direction.
 
 /************************************************************************/
 /* PWM Generator registers' memory limits                               */
@@ -76,8 +78,8 @@ typedef struct
 /************************************************************************/
 /* Memory limits */
 #define APP_REGS_ADD_MIN                    0x20
-#define APP_REGS_ADD_MAX                    0x29
-#define APP_NBYTES_OF_REG_BANK              19
+#define APP_REGS_ADD_MAX                    0x2A
+#define APP_NBYTES_OF_REG_BANK              21
 
 /************************************************************************/
 /* Registers' bits                                                      */
