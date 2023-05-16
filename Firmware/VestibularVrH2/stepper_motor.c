@@ -4,6 +4,8 @@
 /************************************************************************/
 /* Global Parameters                                                    */
 /************************************************************************/
+extern AppRegs app_regs;
+
 uint16_t m_pulse_period_us;
 uint16_t m_min_pulse_interval_us;
 uint16_t m_max_pulse_interval_us;
@@ -171,6 +173,14 @@ int32_t user_sent_request (int32_t requested_steps)
 
 ISR(TCC0_OVF_vect/*, ISR_NAKED*/)
 {	
+	if (TCC0_INTCTRLB == 0)
+	{
+		TCC0_PER = (app_regs.REG_IMMEDIATE_PULSES >> 1) - 1;
+		TCC0_CCA = app_regs.REG_IMMEDIATE_PULSES >> 2;
+		
+		return;
+	}
+	
 	remaining = motor_target - steps_count;
 	
 	

@@ -313,6 +313,41 @@ void app_read_REG_IMMEDIATE_PULSES(void)
 bool app_write_REG_IMMEDIATE_PULSES(void *a)
 {
 	int16_t reg = *((int16_t*)a);
+	
+	if ((reg < 10 && reg > -10) && (reg != 0))
+	{
+		return false;
+	}
+	else if (reg == 0)
+	{
+		timer_type0_stop(&TCC0);
+	}
+	else
+	{		
+		if (TCC0_CTRLA == 0 || TCC0_INTCTRLB != 0)
+		{	
+			if (reg > 0)
+				set_MOTOR_DIRECTION;
+			else
+				clr_MOTOR_DIRECTION;
+			
+			if (reg < 0) reg = -reg;
+			
+			timer_type0_pwm(&TCC0, TIMER_PRESCALER_DIV64, reg >> 1, reg >> 2, INT_LEVEL_MED, INT_LEVEL_OFF);		
+		}
+		else if (TCC0_CTRLA != 0 || TCC0_INTCTRLB == 0) // TCC0_INTCTRLB == 0 (meaning no CCA interrupt) is only used on this immediate_pulses mode
+		{
+			if (reg > 0)
+				set_MOTOR_DIRECTION;
+			else
+				clr_MOTOR_DIRECTION;
+			
+			if (reg < 0) reg = -reg;
+			
+			//TCC0_PER = (reg >> 1) - 1;
+			//TCC0_CCA = reg >> 2;
+		}
+	}
 
 	app_regs.REG_IMMEDIATE_PULSES = reg;
 	
