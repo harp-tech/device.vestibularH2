@@ -32,7 +32,7 @@ registers:
     registerType: Command
     visibility: public
     volatile: "no"
-    minValue: 200
+    minValue: 100
     maxValue: 20000
     defaultValue: 250
   InitialPulseInterval:
@@ -44,7 +44,7 @@ registers:
     registerType: Command
     visibility: public
     volatile: "no"
-    minValue: 200
+    minValue: 100
     maxValue: 20000
     defaultValue: 2000
   PulseStepInterval:
@@ -93,12 +93,31 @@ registers:
     address: 40
     type: U8
     length: 1
-    access: Event
-    description: Controls the device's modules.
+    access: Read
+    description: Contains the state of the stop external switch.
     registerType: Event
     visibility: public
     volatile: "yes"
-    maskType: StopSwitchState
+    maskType: MotorIsMoving
+  Moving:
+    address: 41
+    type: U8
+    length: 1
+    access: Read
+    description: Contains the state of the motor movement.
+    registerType: Event
+    visibility: public
+    volatile: "yes"
+    maskType: MotorIsMoving
+  ImmediatePulses:
+    address: 42
+    type: S16
+    length: 1
+    access: Write
+    description: Sets immediately the motor's pulse interval. The value's signal defines the direction.
+    registerType: Command
+    visibility: public
+    volatile: "yes"
 
 bitMasks:
   EnableDisable:
@@ -115,3 +134,7 @@ bitMasks:
     description: "Bitmask describing the state of stop switch."
     bits:
       StopSwitch:   0x1
+  MotorIsMoving:
+    description: "Bitmask describing if the motor is moving."
+    bits:
+      IsMoving:   0x1
