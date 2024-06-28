@@ -8,6 +8,7 @@
 void init_ios(void)
 {	/* Configure input pins */
 	io_pin2in(&PORTB, 0, PULL_IO_TRISTATE, SENSE_IO_EDGES_BOTH);         // STOP_SWITCH
+	io_pin2in(&PORTD, 2, PULL_IO_TRISTATE, SENSE_IO_EDGES_BOTH);         // RX
 
 	/* Configure input interrupts */
 	io_set_int(&PORTB, INT_LEVEL_LOW, 0, (1<<0), false);                 // STOP_SWITCH

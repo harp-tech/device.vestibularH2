@@ -68,3 +68,15 @@ ISR(ADCA_CH0_vect, ISR_NAKED)
 	
 	reti();
 }
+
+/************************************************************************/
+/* EXTERNAL MOTOR CONTROL                                               */
+/************************************************************************/
+ISR(USARTD0_RXC_vect, ISR_NAKED)
+{
+	app_regs.REG_ANALOG_INPUT = USARTD0_DATA;
+	
+	core_func_send_event(ADD_REG_ANALOG_INPUT, true);
+	
+	reti();
+}
