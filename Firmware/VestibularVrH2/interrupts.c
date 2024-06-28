@@ -97,6 +97,8 @@ ISR(USARTD0_RXC_vect, ISR_NAKED)
 		
 		app_regs.REG_ANALOG_INPUT = motor_pulse_interval;
 		core_func_send_event(ADD_REG_ANALOG_INPUT, true);
+		
+		app_write_REG_IMMEDIATE_PULSES(&motor_pulse_interval);
 	}
 	
 	reti();
