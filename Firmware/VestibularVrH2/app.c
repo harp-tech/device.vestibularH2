@@ -33,8 +33,8 @@ void hwbp_app_initialize(void)
     /* Define versions */
     uint8_t hwH = 1;
     uint8_t hwL = 0;
-    uint8_t fwH = 0;
-    uint8_t fwL = 5;
+    uint8_t fwH = 1;
+    uint8_t fwL = 0;
     uint8_t ass = 0;
     
    	/* Start core */
@@ -90,6 +90,16 @@ void core_callback_initialize_hardware(void)
 	
 	/* Initialize encoder */
 	init_quadrature_encoder();
+	
+	/* Initialize serial with 100 KHz */
+	uint16_t BSEL = 19;
+	int8_t BSCALE = 0;
+		
+	USARTD0_CTRLC = USART_CMODE_ASYNCHRONOUS_gc | USART_PMODE_DISABLED_gc | USART_CHSIZE_8BIT_gc;
+	USARTD0_BAUDCTRLA = *((uint8_t*)&BSEL);
+	USARTD0_BAUDCTRLB = (*(1+(uint8_t*)&BSEL) & 0x0F) | ((BSCALE<<4) & 0xF0);
+	USARTD0_CTRLB = USART_RXEN_bm;
+	USARTD0_CTRLA |= (INT_LEVEL_LOW << 4);
 }
 
 void core_callback_reset_registers(void)
