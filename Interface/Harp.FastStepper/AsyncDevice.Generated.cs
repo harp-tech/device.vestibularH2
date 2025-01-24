@@ -2,14 +2,14 @@ using Bonsai.Harp;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Harp.VestibularH2
+namespace Harp.FastStepper
 {
     /// <inheritdoc/>
     public partial class Device
     {
         /// <summary>
         /// Initializes a new instance of the asynchronous API to configure and interface
-        /// with VestibularH2 devices on the specified serial port.
+        /// with FastStepper devices on the specified serial port.
         /// </summary>
         /// <param name="portName">
         /// The name of the serial port used to communicate with the Harp device.
@@ -26,7 +26,7 @@ namespace Harp.VestibularH2
             if (whoAmI != Device.WhoAmI)
             {
                 var errorMessage = string.Format(
-                    "The device ID {1} on {0} was unexpected. Check whether a VestibularH2 device is connected to the specified serial port.",
+                    "The device ID {1} on {0} was unexpected. Check whether a FastStepper device is connected to the specified serial port.",
                     portName, whoAmI);
                 throw new HarpException(errorMessage);
             }
@@ -36,7 +36,7 @@ namespace Harp.VestibularH2
     }
 
     /// <summary>
-    /// Represents an asynchronous API to configure and interface with VestibularH2 devices.
+    /// Represents an asynchronous API to configure and interface with FastStepper devices.
     /// </summary>
     public partial class AsyncDevice : Bonsai.Harp.AsyncDevice
     {

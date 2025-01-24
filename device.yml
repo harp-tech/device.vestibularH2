@@ -1,7 +1,7 @@
 %YAML 1.1
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/harp-tech/reflex-generator/main/schema/device.json
-device: VestibularH2
+device: FastStepper
 whoAmI: 1225
 firmwareVersion: "0.5"
 hardwareTargets: "1.0"

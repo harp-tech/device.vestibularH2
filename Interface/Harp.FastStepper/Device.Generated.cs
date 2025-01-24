@@ -7,19 +7,19 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Xml.Serialization;
 
-namespace Harp.VestibularH2
+namespace Harp.FastStepper
 {
     /// <summary>
-    /// Generates events and processes commands for the VestibularH2 device connected
+    /// Generates events and processes commands for the FastStepper device connected
     /// at the specified serial port.
     /// </summary>
     [Combinator(MethodName = nameof(Generate))]
     [WorkflowElementCategory(ElementCategory.Source)]
-    [Description("Generates events and processes commands for the VestibularH2 device.")]
+    [Description("Generates events and processes commands for the FastStepper device.")]
     public partial class Device : Bonsai.Harp.Device, INamedElement
     {
         /// <summary>
-        /// Represents the unique identity class of the <see cref="VestibularH2"/> device.
+        /// Represents the unique identity class of the <see cref="FastStepper"/> device.
         /// This field is constant.
         /// </summary>
         public const int WhoAmI = 1225;
@@ -29,7 +29,7 @@ namespace Harp.VestibularH2
         /// </summary>
         public Device() : base(WhoAmI) { }
 
-        string INamedElement.Name => nameof(VestibularH2);
+        string INamedElement.Name => nameof(FastStepper);
 
         /// <summary>
         /// Gets a read-only mapping from address to register type.
@@ -52,19 +52,19 @@ namespace Harp.VestibularH2
     }
 
     /// <summary>
-    /// Represents an operator that groups the sequence of <see cref="VestibularH2"/>" messages by register type.
+    /// Represents an operator that groups the sequence of <see cref="FastStepper"/>" messages by register type.
     /// </summary>
-    [Description("Groups the sequence of VestibularH2 messages by register type.")]
+    [Description("Groups the sequence of FastStepper messages by register type.")]
     public partial class GroupByRegister : Combinator<HarpMessage, IGroupedObservable<Type, HarpMessage>>
     {
         /// <summary>
-        /// Groups an observable sequence of <see cref="VestibularH2"/> messages
+        /// Groups an observable sequence of <see cref="FastStepper"/> messages
         /// by register type.
         /// </summary>
         /// <param name="source">The sequence of Harp device messages.</param>
         /// <returns>
         /// A sequence of observable groups, each of which corresponds to a unique
-        /// <see cref="VestibularH2"/> register.
+        /// <see cref="FastStepper"/> register.
         /// </returns>
         public override IObservable<IGroupedObservable<Type, HarpMessage>> Process(IObservable<HarpMessage> source)
         {
@@ -74,7 +74,7 @@ namespace Harp.VestibularH2
 
     /// <summary>
     /// Represents an operator that filters register-specific messages
-    /// reported by the <see cref="VestibularH2"/> device.
+    /// reported by the <see cref="FastStepper"/> device.
     /// </summary>
     /// <seealso cref="Control"/>
     /// <seealso cref="Pulses"/>
@@ -98,7 +98,7 @@ namespace Harp.VestibularH2
     [XmlInclude(typeof(StopSwitch))]
     [XmlInclude(typeof(MotorState))]
     [XmlInclude(typeof(ImmediatePulses))]
-    [Description("Filters register-specific messages reported by the VestibularH2 device.")]
+    [Description("Filters register-specific messages reported by the FastStepper device.")]
     public class FilterRegister : FilterRegisterBuilder, INamedElement
     {
         /// <summary>
@@ -111,13 +111,13 @@ namespace Harp.VestibularH2
 
         string INamedElement.Name
         {
-            get => $"{nameof(VestibularH2)}.{GetElementDisplayName(Register)}";
+            get => $"{nameof(FastStepper)}.{GetElementDisplayName(Register)}";
         }
     }
 
     /// <summary>
     /// Represents an operator which filters and selects specific messages
-    /// reported by the VestibularH2 device.
+    /// reported by the FastStepper device.
     /// </summary>
     /// <seealso cref="Control"/>
     /// <seealso cref="Pulses"/>
@@ -152,7 +152,7 @@ namespace Harp.VestibularH2
     [XmlInclude(typeof(TimestampedStopSwitch))]
     [XmlInclude(typeof(TimestampedMotorState))]
     [XmlInclude(typeof(TimestampedImmediatePulses))]
-    [Description("Filters and selects specific messages reported by the VestibularH2 device.")]
+    [Description("Filters and selects specific messages reported by the FastStepper device.")]
     public partial class Parse : ParseBuilder, INamedElement
     {
         /// <summary>
@@ -163,12 +163,12 @@ namespace Harp.VestibularH2
             Register = new Control();
         }
 
-        string INamedElement.Name => $"{nameof(VestibularH2)}.{GetElementDisplayName(Register)}";
+        string INamedElement.Name => $"{nameof(FastStepper)}.{GetElementDisplayName(Register)}";
     }
 
     /// <summary>
     /// Represents an operator which formats a sequence of values as specific
-    /// VestibularH2 register messages.
+    /// FastStepper register messages.
     /// </summary>
     /// <seealso cref="Control"/>
     /// <seealso cref="Pulses"/>
@@ -192,7 +192,7 @@ namespace Harp.VestibularH2
     [XmlInclude(typeof(StopSwitch))]
     [XmlInclude(typeof(MotorState))]
     [XmlInclude(typeof(ImmediatePulses))]
-    [Description("Formats a sequence of values as specific VestibularH2 register messages.")]
+    [Description("Formats a sequence of values as specific FastStepper register messages.")]
     public partial class Format : FormatBuilder, INamedElement
     {
         /// <summary>
@@ -203,7 +203,7 @@ namespace Harp.VestibularH2
             Register = new Control();
         }
 
-        string INamedElement.Name => $"{nameof(VestibularH2)}.{GetElementDisplayName(Register)}";
+        string INamedElement.Name => $"{nameof(FastStepper)}.{GetElementDisplayName(Register)}";
     }
 
     /// <summary>
@@ -1267,7 +1267,7 @@ namespace Harp.VestibularH2
 
     /// <summary>
     /// Represents an operator which creates standard message payloads for the
-    /// VestibularH2 device.
+    /// FastStepper device.
     /// </summary>
     /// <seealso cref="CreateControlPayload"/>
     /// <seealso cref="CreatePulsesPayload"/>
@@ -1302,7 +1302,7 @@ namespace Harp.VestibularH2
     [XmlInclude(typeof(CreateTimestampedStopSwitchPayload))]
     [XmlInclude(typeof(CreateTimestampedMotorStatePayload))]
     [XmlInclude(typeof(CreateTimestampedImmediatePulsesPayload))]
-    [Description("Creates standard message payloads for the VestibularH2 device.")]
+    [Description("Creates standard message payloads for the FastStepper device.")]
     public partial class CreateMessage : CreateMessageBuilder, INamedElement
     {
         /// <summary>
@@ -1313,7 +1313,7 @@ namespace Harp.VestibularH2
             Payload = new CreateControlPayload();
         }
 
-        string INamedElement.Name => $"{nameof(VestibularH2)}.{GetElementDisplayName(Payload)}";
+        string INamedElement.Name => $"{nameof(FastStepper)}.{GetElementDisplayName(Payload)}";
     }
 
     /// <summary>
@@ -1346,7 +1346,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the Control register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.Control.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.Control.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1366,7 +1366,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the Control register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.Control.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.Control.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1400,7 +1400,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the Pulses register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.Pulses.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.Pulses.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1420,7 +1420,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the Pulses register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.Pulses.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.Pulses.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1454,7 +1454,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the NominalPulseInterval register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.NominalPulseInterval.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.NominalPulseInterval.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1474,7 +1474,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the NominalPulseInterval register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.NominalPulseInterval.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.NominalPulseInterval.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1508,7 +1508,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the InitialPulseInterval register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.InitialPulseInterval.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.InitialPulseInterval.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1528,7 +1528,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the InitialPulseInterval register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.InitialPulseInterval.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.InitialPulseInterval.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1562,7 +1562,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the PulseStepInterval register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.PulseStepInterval.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.PulseStepInterval.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1582,7 +1582,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the PulseStepInterval register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.PulseStepInterval.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.PulseStepInterval.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1616,7 +1616,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the PulsePeriod register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.PulsePeriod.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.PulsePeriod.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1636,7 +1636,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the PulsePeriod register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.PulsePeriod.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.PulsePeriod.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1670,7 +1670,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the Encoder register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.Encoder.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.Encoder.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1690,7 +1690,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the Encoder register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.Encoder.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.Encoder.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1724,7 +1724,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the AnalogInput register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.AnalogInput.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.AnalogInput.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1744,7 +1744,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the AnalogInput register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.AnalogInput.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.AnalogInput.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1778,7 +1778,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the StopSwitch register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.StopSwitch.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.StopSwitch.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1798,7 +1798,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the StopSwitch register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.StopSwitch.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.StopSwitch.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1832,7 +1832,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the MotorState register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.MotorState.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.MotorState.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1852,7 +1852,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the MotorState register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.MotorState.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.MotorState.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1886,7 +1886,7 @@ namespace Harp.VestibularH2
         /// <returns>A new message for the ImmediatePulses register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.VestibularH2.ImmediatePulses.FromPayload(messageType, GetPayload());
+            return Harp.FastStepper.ImmediatePulses.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1906,7 +1906,7 @@ namespace Harp.VestibularH2
         /// <returns>A new timestamped message for the ImmediatePulses register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.VestibularH2.ImmediatePulses.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.FastStepper.ImmediatePulses.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 

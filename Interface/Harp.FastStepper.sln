@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{C4F4A2ED-00C3-404C-95DF-6150A8024BF2}") = "Harp.VestibularH2", "Harp.VestibularH2\Harp.VestibularH2.csproj", "{D3F34631-3B9A-475A-B037-13537ACA9ED3}"
+Project("{C4F4A2ED-00C3-404C-95DF-6150A8024BF2}") = "Harp.FastStepper", "Harp.FastStepper\Harp.FastStepper.csproj", "{D3F34631-3B9A-475A-B037-13537ACA9ED3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

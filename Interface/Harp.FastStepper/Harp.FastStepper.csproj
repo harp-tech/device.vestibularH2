@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Title>Harp - VestibularH2</Title>
+    <Title>Harp - FastStepper</Title>
     <Authors>harp-tech</Authors>
-    <Copyright>Copyright © harp-tech and Contributors 2023</Copyright>
+    <Copyright>Copyright © harp-tech and Contributors 2025</Copyright>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
-    <Description>Bonsai Library containing interfaces for data acquisition and control of Harp VestibularH2 devices.</Description>
+    <Description>Bonsai Library containing interfaces for data acquisition and control of Harp FastStepper devices.</Description>
     <GenerateDocumentationFile Condition="'$(Configuration)'=='Release'">true</GenerateDocumentationFile>
-    <PackageTags>Harp VestibularH2 Bonsai Rx</PackageTags>
+    <PackageTags>Harp FastStepper Bonsai Rx</PackageTags>
     <PackageProjectUrl></PackageProjectUrl>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageIcon></PackageIcon>

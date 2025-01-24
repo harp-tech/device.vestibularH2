@@ -1,6 +1,6 @@
-## Harp VestibularH2
+## Harp FastStepper
 
-This repository contains the device metadata, firmware and high-level interface to the VestibularH2 device. Below are simple getting started instructions for maintainers to create a new device using the automatic code generators.
+This repository contains the device metadata, firmware and high-level interface to the FastStepper device. Below are simple getting started instructions for maintainers to create a new device using the automatic code generators.
 
 ### Device metadata
 
@@ -9,7 +9,7 @@ This repository contains the device metadata, firmware and high-level interface 
 1. Install [Visual Studio Code](https://code.visualstudio.com/)
 2. Install the [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) extension.
 
-The `device.yml` file in the root of the project contains the VestibularH2 device metadata. A complete specification of device registers, including any bit masks, group masks, and payload specs needs to be provided for code generation to work.
+The `device.yml` file in the root of the project contains the FastStepper device metadata. A complete specification of device registers, including any bit masks, group masks, and payload specs needs to be provided for code generation to work.
 
 ### Generating interface and firmware
 
@@ -21,7 +21,7 @@ The `device.yml` file in the root of the project contains the VestibularH2 devic
 dotnet tool install -g dotnet-t4
 ```
 
-The `Generators` folder contains all text templates and project files required to generate both the firmware headers and the interface for the VestibularH2 device. To run the text templating engine just build the project inside this folder.
+The `Generators` folder contains all text templates and project files required to generate both the firmware headers and the interface for the FastStepper device. To run the text templating engine just build the project inside this folder.
 
 ```
 cd Generators
