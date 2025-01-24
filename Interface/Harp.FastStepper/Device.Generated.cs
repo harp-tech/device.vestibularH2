@@ -22,7 +22,7 @@ namespace Harp.FastStepper
         /// Represents the unique identity class of the <see cref="FastStepper"/> device.
         /// This field is constant.
         /// </summary>
-        public const int WhoAmI = 1225;
+        public const int WhoAmI = 2120;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Device"/> class.
