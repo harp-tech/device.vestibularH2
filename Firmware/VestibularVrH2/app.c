@@ -30,27 +30,19 @@ static const uint8_t default_device_name[] = "VestibularH2";
 
 void hwbp_app_initialize(void)
 {
-    /* Define versions */
-    uint8_t hwH = 1;
-    uint8_t hwL = 0;
-    uint8_t fwH = 1;
-    uint8_t fwL = 0;
-    uint8_t ass = 0;
-    
-   	/* Start core */
-    core_func_start_core(
-        1225,
-        hwH, hwL,
-        fwH, fwL,
-        ass,
-        (uint8_t*)(&app_regs),
-        APP_NBYTES_OF_REG_BANK,
-        APP_REGS_ADD_MAX - APP_REGS_ADD_MIN + 1,
-        default_device_name,
-        false,	// The device is not able to repeat the harp timestamp clock
-        false,	// The device is not able to generate the harp timestamp clock
-        3		// Default timestamp offset
-    );
+	/* Start core */
+	core_func_start_core_V2(
+		WHO_AM_I,
+		MAJOR_HW_VERSION, MINOR_HW_VERSION, PATCH_HW_VERSION,
+		MAJOR_FW_VERSION, MINOR_FW_VERSION, PATCH_FW_VERSION,
+		(uint8_t*)(&app_regs),
+		APP_NBYTES_OF_REG_BANK,
+		APP_REGS_ADD_MAX - APP_REGS_ADD_MIN + 1,
+		default_device_name,
+		false,	// The device is _not_ able to repeat the harp timestamp clock
+		false,	// The device is _not_ able to generate the harp timestamp clock
+		3		// Default timestamp offset
+	);
 }
 
 /************************************************************************/
